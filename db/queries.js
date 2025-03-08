@@ -7,6 +7,11 @@ async function getAllDevices() {
   return rows;
 }
 
+async function getCategories() {
+  const { rows } = await pool.query("select distinct category from devices");
+  return rows;
+}
 module.exports = {
   getAllDevices,
+  getCategories,
 };
