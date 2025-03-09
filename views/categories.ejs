@@ -6,11 +6,20 @@
     <title>Categories</title>
   </head>
   <body>
+    <%-include('partials/header') %>
     <h1>Categories</h1>
     <% if(locals.categories){%>
       <% for(i=0;i<categories.length;i++){ %>
         <p><%=categories[i].category %></p>
         <% } %>
       <% } %>
+      <% if(locals.errors){ %>
+      <%-include('partials/errors',{errors}) %>
+      <% } %>
+      <form action="/category" method="post">
+          <label for="category">Device Type: </label>
+          <input type="text" id="category" name="category" required minlength="5" maxlength='25'>
+        <button type="submit">Add</button>
+      </form>
   </body>
 </html>
