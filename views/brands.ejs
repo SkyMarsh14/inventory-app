@@ -3,22 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Categories</title>
+    <title>Brands</title>
   </head>
   <body>
     <%-include('partials/header') %>
-    <h1>Categories</h1>
-    <% if(locals.categories){%>
-      <% for(i=0;i<categories.length;i++){ %>
-        <p><%=categories[i].categoryname %></p>
+    <h1>Brands</h1>
+    <% if(locals.brands){%>
+      <% for(i=0;i<brands.length;i++){ %>
+        <p><%=brands[i].category %></p>
         <% } %>
       <% } %>
       <% if(locals.errors){ %>
       <%-include('partials/errors',{errors}) %>
       <% } %>
-      <form action="/category" method="post">
-          <label for="category">Device Type: </label>
-          <input type="text" id="category" name="category" required minlength="5" maxlength='25'>
+      <form action="/brand" method="post">
+          <label for="brand">Brand Name: </label>
+          <input type="text" id="brand" name="brand" required minlength="5" maxlength='25'>
         <button type="submit">Add</button>
       </form>
   </body>

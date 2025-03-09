@@ -7,18 +7,29 @@ const DEVICE = `CREATE TABLE IF NOT EXISTS devices (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     name VARCHAR (255),
     brandId INTEGER,
-    category VARCHAR (255),
-    FOREIGN KEY (brandId) REFERENCES brands(id)
+    categoryId INTEGER,
+    FOREIGN KEY (brandId) REFERENCES brands(id),
+    FOREIGN KEY (categoryId) REFERENCES categories(id)
     )`;
 
-const DEVICE_VALUES = `
-    INSERT INTO devices (name,brandId,category)
+const CATEGORY = `CREATE TABLE IF NOT EXISTS categories(
+    id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    categoryName VARCHAR (255) UNIQUE
+)`;
+const CATEGORY_VALUES = `
+    INSERT INTO categories (categoryName)
     VALUES
-    ('M4 Macbook Air',1,'laptop'),
-    ('iPhone 16 Pro',1,'smartphone'),
-    ('XPS 14',3,'laptop'),
-    ('Galaxy S25',2,'smartphone'),
-    ('Galaxy Book5 Pro',2 ,'laptop')
+    ('laptop'),
+    ('smartphone')
+`;
+const DEVICE_VALUES = `
+    INSERT INTO devices (name,brandId,categoryId)
+    VALUES
+    ('M4 Macbook Air',1,1),
+    ('iPhone 16 Pro',1,2),
+    ('XPS 14',3,1),
+    ('Galaxy S25',2,2),
+    ('Galaxy Book5 Pro',2 ,1)
     `;
 
 const SUPPLIER = `CREATE TABLE IF NOT EXISTS suppliers (
@@ -58,6 +69,8 @@ async function main() {
   });
   try {
     await client.connect();
+    await client.query(CATEGORY);
+    await client.query(CATEGORY_VALUES);
     await client.query(BRAND);
     await client.query(DEVICE);
     await client.query(SUPPLIER);

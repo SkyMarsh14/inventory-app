@@ -8,10 +8,17 @@ async function getAllDevices() {
 }
 
 async function getCategories() {
-  const { rows } = await pool.query("select distinct category from devices");
+  const { rows } = await pool.query("select categoryName from categories");
   return rows;
+}
+
+async function addCategory(category) {
+  await pool.query("INSERT INTO categories (categoryName) VALUES ($1)", [
+    category,
+  ]);
 }
 module.exports = {
   getAllDevices,
   getCategories,
+  addCategory,
 };

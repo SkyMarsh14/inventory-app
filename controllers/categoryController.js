@@ -27,6 +27,7 @@ const controller = {
           .render("categories", { categories, errors: errors.array() });
       }
       const { category } = req.body;
+      await queries.addCategory(category);
       res.redirect("/");
     },
   ],
