@@ -6,8 +6,8 @@ const validateCategory = [
     .trim()
     .notEmpty()
     .withMessage("Ths field is required.")
-    .isAlpha()
-    .withMessage("Must only contain letters.")
+    .isString()
+    .withMessage("Must be a string.")
     .isLength({ min: 5, max: 25 })
     .withMessage("Category name must be between 5 to 25 letters."),
 ];
@@ -28,7 +28,7 @@ const controller = {
       }
       const { category } = req.body;
       await queries.addCategory(category);
-      res.redirect("/");
+      res.redirect("/category");
     },
   ],
 };
