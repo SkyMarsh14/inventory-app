@@ -2,7 +2,7 @@ const pool = require("./pool");
 
 async function getAllDevices() {
   const { rows } = await pool.query(
-    "select * from devices join brands on brands.id=brandId"
+    "select * from devices join brands on brands.id=brandid join categories on categoryid=categories.id"
   );
   return rows;
 }
