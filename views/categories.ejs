@@ -1,24 +1,26 @@
 <!DOCTYPE html>
+<% const capitalizedTitle=page.charAt(0).toUpperCase()+page.slice(1) %>
+<% const dataname=page+"name" %>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Categories</title>
+    <title><%=capitalizedTitle %></title>
   </head>
   <body>
     <%-include('partials/header') %>
-    <h1>Categories</h1>
-    <% if(locals.categories){%>
-      <% for(i=0;i<categories.length;i++){ %>
-        <p><%=categories[i].categoryname %></p>
+    <h1><%=capitalizedTitle %></h1>
+    <% if(locals.data){%>
+      <% for(i=0;i<data.length;i++){ %>
+        <p><%=data[i][dataname] %></p>
         <% } %>
       <% } %>
       <% if(locals.errors){ %>
       <%-include('partials/errors',{errors}) %>
       <% } %>
-      <form action="/category" method="post">
-          <label for="category">Device Type: </label>
-          <input type="text" id="category" name="category" required minlength="5" maxlength='25'>
+      <form action="/<%=capitalizedTitle %>" method="post">
+          <label for="<%=page %>"><%=capitalizedTitle %> Type: </label>
+          <input type="text" id="<%=capitalizedTitle %>" name="<%=dataname %>" required minlength="<%=length.min %>" maxlength='<%=length.max  %>'>
         <button type="submit">Add</button>
       </form>
   </body>
