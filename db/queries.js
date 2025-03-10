@@ -17,8 +17,18 @@ async function addCategory(category) {
     category,
   ]);
 }
+async function getBrands() {
+  const { rows } = await pool.query("SELECT brandName from brands");
+  return rows;
+}
+
+async function addBrand(brand) {
+  await pool.query("INSERT INTO brands (brandName) VALUES ($1)", [brand]);
+}
 module.exports = {
   getAllDevices,
   getCategories,
   addCategory,
+  getBrands,
+  addBrand,
 };

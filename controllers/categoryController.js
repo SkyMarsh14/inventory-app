@@ -1,7 +1,7 @@
 const queries = require("./../db/queries");
 const { body, validationResult } = require("express-validator");
 
-const validateCategory = [
+const categoryValidator = [
   body("category")
     .trim()
     .notEmpty()
@@ -17,7 +17,7 @@ const controller = {
     res.render("categories", { categories });
   },
   post: [
-    validateCategory,
+    categoryValidator,
     async (req, res) => {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
