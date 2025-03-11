@@ -11,14 +11,16 @@
     <%-include('partials/header') %>
     <h1><%=capitalizedTitle %></h1>
     <% if(locals.data){%>
+      <ul>
       <% for(i=0;i<data.length;i++){ %>
-        <p><%=data[i][dataname] %></p>
+        <li><a href="<%=page %>/<%=data[i].id %>/update"><%=data[i][dataname] %></a></li>
         <% } %>
+      </ul>
       <% } %>
       <% if(locals.errors){ %>
       <%-include('partials/errors',{errors}) %>
       <% } %>
-      <form action="/<%=capitalizedTitle %>" method="post">
+      <form action="/<%=page %>" method="post">
           <label for="<%=page %>"><%=capitalizedTitle %> Type: </label>
           <input type="text" id="<%=capitalizedTitle %>" name="<%=dataname %>" required minlength="<%=length.min %>" maxlength='<%=length.max  %>'>
         <button type="submit">Add</button>

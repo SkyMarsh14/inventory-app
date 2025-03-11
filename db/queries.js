@@ -8,7 +8,7 @@ async function getAllDevices() {
 }
 
 async function getCategories() {
-  const { rows } = await pool.query("select categoryName from categories");
+  const { rows } = await pool.query("select * from categories");
   return rows;
 }
 
@@ -18,7 +18,7 @@ async function addCategory(category) {
   ]);
 }
 async function getBrands() {
-  const { rows } = await pool.query("SELECT brandName from brands");
+  const { rows } = await pool.query("SELECT * from brands");
   return rows;
 }
 
