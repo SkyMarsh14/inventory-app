@@ -1,0 +1,9 @@
+:root {
+  --main-bg-color: #0c1013;
+  --outer-table-border: 1px solid white;
+  --main-font-color: #feffff;
+  --light-green-accent-font-color: #356561;
+  --link-on-hover-color: #61beb8;
+  --header-border-color: rgba(255, 255, 255, 0.152);
+  --container-max-width: 1200px;
+}

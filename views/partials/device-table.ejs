@@ -1,14 +1,14 @@
 <table>
     <caption>Device List</caption>
     <thead>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Brand</th>
+        <th scope="col">Name</th>
+        <th scope="col">Type</th>
+        <th scope="col">Brand</th>
     </thead>
     <tbody>
         <% for(let i=0;i<data.length;i++){ %>
             <tr>
-                <th><%=data[i].name %></th>
+                <th scope="row"><%=data[i].name %></th>
                 <td><%=data[i].categoryname %></td>
                 <td><%=data[i].brandname %></td>
             </tr>

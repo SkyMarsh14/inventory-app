@@ -1,0 +1,17 @@
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: var(--outer-table-border);
+}
+th,
+td {
+  border: var(--outer-table-border);
+  padding: 8px 10px;
+}
+caption {
+  caption-side: bottom;
+}
+thead th:nth-child(1) {
+  width: 40%;
+}

@@ -4,10 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gadget Database</title>
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/customProperties.css" />
+    <link rel="stylesheet" href="/css/table.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
     <%-include('partials/header') %>
-    <h1>Welcome to the Gadget Database.</h1>
-    <%-include('partials/device-list',{data}) %>
+
+    <div class="page-container">
+      <h1>Gadget Database</h1>
+      <%-include('partials/device-table',{data}) %>
+    </div>
   </body>
 </html>

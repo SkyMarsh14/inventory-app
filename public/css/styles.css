@@ -1,0 +1,36 @@
+body {
+  background-color: var(--main-bg-color);
+  margin: 0 auto;
+  color: var(--main-font-color);
+}
+header {
+  font-size: 1.3em;
+  border-bottom: solid 0.5px var(--header-border-color);
+  padding: 0.5em;
+}
+nav {
+  max-width: var(--container-max-width);
+  margin: auto;
+}
+.page-container {
+  max-width: var(--container-max-width);
+  margin: auto;
+}
+a {
+  padding: 0.5em;
+  margin: auto;
+  transition: background-color 0.3s ease;
+}
+a:link {
+  text-decoration: none;
+  background-color: var(--light-green-accent-font-color);
+}
+a:visited {
+  color: var(--main-font-color);
+  background-color: var(--light-green-accent-font-color);
+
+  text-decoration: none;
+}
+a:hover {
+  background-color: var(--link-on-hover-color);
+}
