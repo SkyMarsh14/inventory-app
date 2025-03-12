@@ -26,10 +26,17 @@ async function addBrand(brand) {
   await pool.query("INSERT INTO brands (brandName) VALUES ($1)", [brand]);
 }
 
+async function addDevice(device, categoryId, brandId) {
+  await pool.query(
+    "INSERT INTO devices(name,brandid,categoryid) VALUES($1,$2,$3)",
+    [device, categoryId, brandId]
+  );
+}
 module.exports = {
   getAllDevices,
   getCategories,
   addCategory,
   getBrands,
   addBrand,
+  addDevice,
 };
