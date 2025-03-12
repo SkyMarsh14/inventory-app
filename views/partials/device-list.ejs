@@ -1,9 +1,17 @@
-<ul>
-    <% for(let i=0;i<devices.length;i++){ %>
-        <li>
-            <p>Device: <%=devices[i].name %></p>
-            <p>Brand: <%=devices[i].brandname %></p>
-            <p>Category: <%=devices[i].categoryname %></p>
-        </li>
-        <% } %>
-</ul>
+<table>
+    <caption>Device List</caption>
+    <thead>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Brand</th>
+    </thead>
+    <tbody>
+        <% for(let i=0;i<data.length;i++){ %>
+            <tr>
+                <th><%=data[i].name %></th>
+                <td><%=data[i].categoryname %></td>
+                <td><%=data[i].brandname %></td>
+            </tr>
+            <%} %>
+    </tbody>
+</table>
