@@ -4,6 +4,8 @@
   --main-font-color: #feffff;
   --light-green-accent-font-color: #356561;
   --link-on-hover-color: #61beb8;
-  --header-border-color: rgba(255, 255, 255, 0.152);
+  --header-border-color: rgba(255, 255, 255, 0.789);
   --container-max-width: 1200px;
+  --nav-gray: gray;
+  --inner-table-border: 1px solid rgb(158, 155, 155);
 }

@@ -6,7 +6,7 @@ table {
 }
 th,
 td {
-  border: var(--outer-table-border);
+  border: var(--inner-table-border);
   padding: 8px 10px;
 }
 caption {
