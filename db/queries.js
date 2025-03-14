@@ -2,7 +2,7 @@ const pool = require("./pool");
 
 async function getAllDevices() {
   const { rows } = await pool.query(
-    "select * from devices join brands on brands.id=brandid join categories on categoryid=categories.id"
+    "select devices.id,name,categoryname,brandname from devices join brands on brands.id=brandid join categories on categoryid=categories.id"
   );
   return rows;
 }
@@ -32,6 +32,9 @@ async function addDevice(device, categoryId, brandId) {
     [device, categoryId, brandId]
   );
 }
+async function deleteDevice(deviceId) {
+  await pool.query(`DELETE FROM devices WHERE id=${deviceId}`);
+}
 module.exports = {
   getAllDevices,
   getCategories,
@@ -39,4 +42,5 @@ module.exports = {
   getBrands,
   addBrand,
   addDevice,
+  deleteDevice,
 };

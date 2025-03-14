@@ -1,8 +1,11 @@
 const queries = require("./../db/queries");
 
-const indexController = async (req, res) => {
+const main = async (req, res) => {
   const devices = await queries.getAllDevices();
   res.render("index", { data: devices });
 };
-
-module.exports = indexController;
+const devices = async (req, res) => {
+  await queries.deleteDevice(req.params.id);
+  res.redirect("/");
+};
+module.exports = { main, devices };

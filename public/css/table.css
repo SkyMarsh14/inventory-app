@@ -37,3 +37,6 @@ caption {
 thead th:nth-child(1) {
   width: 40%;
 }
+tbody tr td:last-child {
+  display: flex;
+}
