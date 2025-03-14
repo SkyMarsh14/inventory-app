@@ -64,11 +64,25 @@ tbody tr td:last-child {
   box-shadow: 5px 5px 3px black;
   transform: translateY(-0.3em);
 }
-.updateForm > button {
+.updateForm > button,
+.deleteForm > button {
   display: flex;
   align-items: center;
   gap: 0.2em;
 }
 button > span {
   display: inline-block;
+}
+.updateForm > button {
+  color: rgb(85, 240, 235);
+  background-color: rgb(26, 26, 26);
+  border: 1px solid rgb(85, 240, 235);
+  transition-property: color, background-color, border, transform;
+  transition-duration: 0.3s;
+}
+.updateForm > button:hover {
+  color: black;
+  background-color: rgb(85, 240, 235);
+  border: 1px solid black;
+  transform: translateY(-0.3em);
 }
