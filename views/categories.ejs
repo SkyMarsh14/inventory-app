@@ -6,24 +6,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%=capitalizedTitle %></title>
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/customProperties.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
     <%-include('partials/header') %>
-    <h1><%=capitalizedTitle %></h1>
-    <% if(locals.data){%>
-      <ul>
-      <% for(i=0;i<data.length;i++){ %>
-        <li><a href="<%=page %>/<%=data[i].id %>/update"><%=data[i][dataname] %></a></li>
+    <div class="page-container">
+      <h1><%=capitalizedTitle %></h1>
+      <% if(locals.data){%>
+        <ul>
+        <% for(i=0;i<data.length;i++){ %>
+          <li><a href="<%=page %>/<%=data[i].id %>/update"><%=data[i][dataname] %></a></li>
+          <% } %>
+        </ul>
         <% } %>
-      </ul>
-      <% } %>
-      <% if(locals.errors){ %>
-      <%-include('partials/errors',{errors}) %>
-      <% } %>
-      <form action="/<%=page %>" method="post">
-          <label for="<%=page %>"><%=capitalizedTitle %> Type: </label>
-          <input type="text" id="<%=capitalizedTitle %>" name="<%=dataname %>" required minlength="<%=length.min %>" maxlength='<%=length.max  %>'>
-        <button type="submit">Add</button>
-      </form>
+        <% if(locals.errors){ %>
+        <%-include('partials/errors',{errors}) %>
+        <% } %>
+        <form action="/<%=page %>" method="post">
+            <label for="<%=page %>"><%=capitalizedTitle %> Type: </label>
+            <input type="text" id="<%=capitalizedTitle %>" name="<%=dataname %>" required minlength="<%=length.min %>" maxlength='<%=length.max  %>'>
+          <button type="submit">Add</button>
+        </form>
+    </div>
   </body>
 </html>

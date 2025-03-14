@@ -4,38 +4,42 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add device</title>
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/customProperties.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
     <%-include('partials/header') %>
-    <h1>Add a new device!</h1>
     <% if(locals.errors){ %>
         <%-include('partials/errors') %>
         <% } %>
-    <form action="/new" method="post">
-        <div class="device-input">
-            <label for="device-input">Device: </label>
-            <input type="text" id="device-input" name="device-input" minlength="<%=length.min %>" maxlength="<%=length.max %>" required>
-        </div>
-
-        <fieldset>
-            <legend>Category</legend>
-            <% for(let i=0;i<categories.length;i++){%>
-                <% const name=categories[i].categoryname %>
-                <% const capName=name.charAt(0).toUpperCase() + name.slice(1) %>
-                <input type="radio" name="category" value=<%=categories[i].id %> id="<%=name %>" required>
-                <label for="<%=name %>"><%=capName %></label>
-                <% } %>
-        </fieldset>
-        <fieldset>
-            <legend>Brand</legend>
-            <% for(let i=0;i<brands.length;i++){%>
-                <% const name=brands[i].brandname %>
-                <% const capName=name.charAt(0).toUpperCase() + name.slice(1) %>
-                <input  type="radio" name="brand" value=<%=brands[i].id %> id="<%=name %>" requierd>
-                <label for="<%=name %>"><%=capName %></label>
-                <% } %>
-        </fieldset>
-        <button type="submit">Submit</button>
-    </form>
+    <div class="page-container">
+      <h1>Add a new device!</h1>
+      <form action="/new" method="post">
+          <div class="device-input">
+              <label for="device-input">Device: </label>
+              <input type="text" id="device-input" name="device-input" minlength="<%=length.min %>" maxlength="<%=length.max %>" required>
+          </div>
+          <fieldset>
+              <legend>Category</legend>
+              <% for(let i=0;i<categories.length;i++){%>
+                  <% const name=categories[i].categoryname %>
+                  <% const capName=name.charAt(0).toUpperCase() + name.slice(1) %>
+                  <input type="radio" name="category" value=<%=categories[i].id %> id="<%=name %>" required>
+                  <label for="<%=name %>"><%=capName %></label>
+                  <% } %>
+          </fieldset>
+          <fieldset>
+              <legend>Brand</legend>
+              <% for(let i=0;i<brands.length;i++){%>
+                  <% const name=brands[i].brandname %>
+                  <% const capName=name.charAt(0).toUpperCase() + name.slice(1) %>
+                  <input  type="radio" name="brand" value=<%=brands[i].id %> id="<%=name %>" requierd>
+                  <label for="<%=name %>"><%=capName %></label>
+                  <% } %>
+          </fieldset>
+          <button type="submit">Submit</button>
+      </form>
+    </div>
   </body>
 </html>
