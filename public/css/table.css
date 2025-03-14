@@ -62,5 +62,13 @@ tbody tr td:last-child {
   background-color: red;
   border: 1px solid black;
   box-shadow: 5px 5px 3px black;
-  transform: translateY(-0.5em);
+  transform: translateY(-0.3em);
+}
+.updateForm > button {
+  display: flex;
+  align-items: center;
+  gap: 0.2em;
+}
+button > span {
+  display: inline-block;
 }
