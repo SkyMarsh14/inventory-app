@@ -40,3 +40,27 @@ thead th:nth-child(1) {
 tbody tr td:last-child {
   display: flex;
 }
+form > button {
+  border-radius: 5px;
+  padding: 0.2em 0.5em;
+  cursor: pointer;
+}
+.deleteForm > button {
+  background-color: rgb(26, 26, 26);
+  color: red;
+  border: 1px solid red;
+  transition-property: border, color, background-color, box-shadow, transform;
+  transition-duration: 0.3s;
+}
+tbody tr td:last-child {
+  display: flex;
+  gap: 2em;
+  justify-content: center;
+}
+.deleteForm > button:hover {
+  color: black;
+  background-color: red;
+  border: 1px solid black;
+  box-shadow: 5px 5px 3px black;
+  transform: translateY(-0.5em);
+}

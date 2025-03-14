@@ -4,8 +4,9 @@ const main = async (req, res) => {
   const devices = await queries.getAllDevices();
   res.render("index", { data: devices });
 };
-const devices = async (req, res) => {
+const deleteAction = async (req, res) => {
   await queries.deleteDevice(req.params.id);
   res.redirect("/");
 };
-module.exports = { main, devices };
+const updateDevice = async (req, res) => {};
+module.exports = { main, deleteAction, updateDevice };
