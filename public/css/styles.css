@@ -61,4 +61,5 @@ ul {
 .deleteForm.category > div {
   margin-right: 0.3em;
   font-size: 1.5em;
+  text-transform: capitalize;
 }

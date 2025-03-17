@@ -87,3 +87,6 @@ button > span {
   border: 1px solid black;
   transform: translateY(-0.3em);
 }
+tbody > tr td:nth-child(-n + 3) {
+  text-transform: capitalize;
+}
