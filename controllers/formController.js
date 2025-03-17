@@ -21,6 +21,7 @@ const formController = {
       categories,
       brands,
       length,
+      url: req.originalUrl,
     });
   },
   post: [
@@ -48,6 +49,20 @@ const formController = {
   delete: async (req, res) => {
     await queries.deleteDevice(req.params.id);
     res.redirect("/");
+  },
+  update: async (req, res) => {
+    const device = await queries.getDeviceById(req.params.deviceId);
+    const categories = await queries.getCategories();
+    const brands = await queries.getBrands();
+    res.render("index", {
+      title: "Update device info.",
+      page: "update",
+      categories,
+      brands,
+      length,
+      device: device[0],
+      url: req.originalUrl,
+    });
   },
 };
 

@@ -2,17 +2,17 @@
         <%-include('partials/errors') %>
         <% } %>
       <h1><%=title %></h1>
-      <form action="/form" method="post">
+      <form action="<%=locals.url %>" method="post">
           <div class="device-input">
               <label for="device-input">Device: </label>
-              <input type="text" id="device-input" name="device-input" minlength="<%=length.min %>" maxlength="<%=length.max %>" required>
+              <input <% if(locals.device) { %> value='<%=locals.device.name%>' <% } %> type="text" id="device-input" name="device-input" minlength="<%=length.min %>" maxlength="<%=length.max %>" required />
           </div>
           <fieldset>
               <legend>Category</legend>
               <% for(let i=0;i<categories.length;i++){%>
                   <% const name=categories[i].categoryname %>
                   <% const capName=name.charAt(0).toUpperCase() + name.slice(1) %>
-                  <input type="radio" name="category" value=<%=categories[i].id %> id="<%=name %>" required>
+                  <input <% if(locals.device && device.categoryname===name) {%> checked <% } %> type="radio" name="category" value=<%=categories[i].id %> id="<%=name %>" required>
                   <label for="<%=name %>"><%=capName %></label>
                   <% } %>
           </fieldset>
@@ -21,8 +21,9 @@
               <% for(let i=0;i<brands.length;i++){%>
                   <% const name=brands[i].brandname %>
                   <% const capName=name.charAt(0).toUpperCase() + name.slice(1) %>
-                  <input  type="radio" name="brand" value=<%=brands[i].id %> id="<%=name %>" requierd>
-                  <label for="<%=name %>"><%=capName %></label>
+                  <input <% if(locals.device && device.brandname===name) {%> checked <% } %> type="radio" name="brand" value="<%=brands[i].id %>" id="<%=name %>" required>
+                  <label  
+                    for="<%=name %>"><%=capName %></label>
                   <% } %>
           </fieldset>
           <button type="submit">Submit</button>

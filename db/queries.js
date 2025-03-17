@@ -36,10 +36,12 @@ async function deleteDevice(deviceId) {
   await pool.query(`DELETE FROM devices WHERE id=${deviceId}`);
 }
 async function getDeviceById(deviceId) {
-  return await pool.query(
-    `select devices.id, name, categoryname,brandname from devices join brands on brands.id=branid join categories on categoryid=categories.id
+  return (
+    await pool.query(
+      `select devices.id, name, categoryname,brandname from devices join brands on brands.id=brandid join categories on categoryid=categories.id
     where devices.id=${deviceId}`
-  );
+    )
+  ).rows;
 }
 module.exports = {
   getAllDevices,

@@ -19,9 +19,9 @@
 
     <div class="page-container">
       <% switch(locals.page){ case "main": %>
-      <%-include('partials/device-table', {data}) %> <% break; case "new": %>
-      <%-include('partials/form') %> <% break; case "category": case "brand": %>
-      <%-include('partials/categories') %> <% break; } %>
+      <%-include('partials/device-table', {data}) %> <% break; case "new":
+      case"update": %> <%-include('partials/form') %> <% break; case "category":
+      case "brand": %> <%-include('partials/categories') %> <% break; } %>
     </div>
   </body>
 </html>
