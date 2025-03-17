@@ -1,19 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add device</title>
-    <link rel="stylesheet" href="/css/reset.css" />
-    <link rel="stylesheet" href="/css/customProperties.css" />
-    <link rel="stylesheet" href="/css/styles.css" />
-  </head>
-  <body>
-    <%-include('partials/header') %>
     <% if(locals.errors){ %>
         <%-include('partials/errors') %>
         <% } %>
-    <div class="page-container">
       <h1>Add a new device!</h1>
       <form action="/new" method="post">
           <div class="device-input">
@@ -41,5 +28,4 @@
           <button type="submit">Submit</button>
       </form>
     </div>
-  </body>
-</html>
+

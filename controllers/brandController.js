@@ -12,7 +12,11 @@ const brandValidator = [
 const controller = {
   get: async (req, res) => {
     const brands = await queries.getBrands();
-    res.render("categories", { data: brands, page: "brand", length: length });
+    res.render("index", {
+      page: "brand",
+      data: brands,
+      length: length,
+    });
   },
   post: [
     brandValidator,

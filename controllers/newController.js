@@ -15,7 +15,7 @@ const newController = {
   get: async (req, res) => {
     const categories = await queries.getCategories();
     const brands = await queries.getBrands();
-    res.render("new", { categories, brands, length });
+    res.render("index", { page: "new", categories, brands, length });
   },
   post: [
     formValidator,

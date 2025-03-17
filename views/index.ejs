@@ -18,8 +18,10 @@
     <%-include('partials/header') %>
 
     <div class="page-container">
-      <h1>Gadget Database</h1>
-      <%-include('partials/device-table',{data}) %>
+      <% switch(locals.page){ case "main": %>
+      <%-include('partials/device-table', {data}) %> <% break; case "new": %>
+      <%-include('partials/new') %> <% break; case "category": case "brand": %>
+      <%-include('partials/categories') %> <% break; } %>
     </div>
   </body>
 </html>

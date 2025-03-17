@@ -14,7 +14,11 @@ const categoryValidator = [
 const controller = {
   get: async (req, res) => {
     const categories = await queries.getCategories();
-    res.render("categories", { data: categories, page: "category", length });
+    res.render("index", {
+      page: "category",
+      data: categories,
+      length,
+    });
   },
   post: [
     categoryValidator,
@@ -22,7 +26,8 @@ const controller = {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         const categories = await queries.getCategories();
-        return res.status(400).render("categories", {
+        return res.status(400).render("index", {
+          page: "category",
           categories,
           errors: errors.array(),
           page: "category",

@@ -33,6 +33,7 @@ tbody {
 }
 caption {
   caption-side: bottom;
+  margin-top: 0.3em;
 }
 thead th:nth-child(1) {
   width: 40%;
