@@ -28,6 +28,7 @@ const controller = {
   ],
   delete: async (req, res) => {
     const brandId = req.params.brandId;
+    await queries.deleteBrand(brandId);
     res.redirect("/brand");
   },
 };
