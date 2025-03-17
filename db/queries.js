@@ -43,6 +43,12 @@ async function getDeviceById(deviceId) {
     )
   ).rows;
 }
+async function updateDevice(deviceId, deviceName, categoryId, brandId) {
+  await pool.query(
+    `UPDATE devices SET name=$1, brandid=$2, categoryid=$3 WHERE id=$4`,
+    [deviceName, categoryId, brandId, deviceId]
+  );
+}
 module.exports = {
   getAllDevices,
   getCategories,
@@ -52,4 +58,5 @@ module.exports = {
   addDevice,
   deleteDevice,
   getDeviceById,
+  updateDevice,
 };

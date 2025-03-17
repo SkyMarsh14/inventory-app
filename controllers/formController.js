@@ -50,19 +50,37 @@ const formController = {
     await queries.deleteDevice(req.params.id);
     res.redirect("/");
   },
-  update: async (req, res) => {
-    const device = await queries.getDeviceById(req.params.deviceId);
-    const categories = await queries.getCategories();
-    const brands = await queries.getBrands();
-    res.render("index", {
-      title: "Update device info.",
-      page: "update",
-      categories,
-      brands,
-      length,
-      device: device[0],
-      url: req.originalUrl,
-    });
+  update: {
+    get: async (req, res) => {
+      const device = await queries.getDeviceById(req.params.deviceId);
+      const categories = await queries.getCategories();
+      const brands = await queries.getBrands();
+      res.render("index", {
+        title: "Update device info.",
+        page: "update",
+        categories,
+        brands,
+        length,
+        device: device[0],
+        url: req.originalUrl,
+      });
+    },
+    post: [
+      formValidator,
+      async (req, res) => {
+        const deviceId = req.params.deviceId;
+        const deviceName = req.body["device-input"];
+        const categoryId = req.body.category;
+        const brandId = req.body.brand;
+        try {
+          await queries.updateDevice(deviceId, deviceName, categoryId, brandId);
+        } catch (error) {
+          throw new Error(error);
+        } finally {
+          res.redirect("/");
+        }
+      },
+    ],
   },
 };
 
