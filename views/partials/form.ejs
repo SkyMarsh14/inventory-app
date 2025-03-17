@@ -1,8 +1,8 @@
     <% if(locals.errors){ %>
         <%-include('partials/errors') %>
         <% } %>
-      <h1>Add a new device!</h1>
-      <form action="/new" method="post">
+      <h1><%=title %></h1>
+      <form action="/form" method="post">
           <div class="device-input">
               <label for="device-input">Device: </label>
               <input type="text" id="device-input" name="device-input" minlength="<%=length.min %>" maxlength="<%=length.max %>" required>

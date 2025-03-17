@@ -5,7 +5,7 @@ const path = require("node:path");
 const indexRouter = require("./routes/indexRouter");
 const categoryRouter = require("./routes/categoryRouter");
 const brandRouter = require("./routes/brandRouter");
-const newRouter = require("./routes/newRouter");
+const formRouter = require("./routes/formRouter");
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -16,7 +16,7 @@ app.use(express.static("public"));
 app.use("/", indexRouter);
 app.use("/category", categoryRouter);
 app.use("/brand", brandRouter);
-app.use("/new", newRouter);
+app.use("/form", formRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

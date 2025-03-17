@@ -1,4 +1,4 @@
-const queries = require("./../db/queries");
+const queries = require("../db/queries");
 const { body, validationResult } = require("express-validator");
 const length = { min: 3, max: 20 };
 const formValidator = [
@@ -11,11 +11,17 @@ const formValidator = [
   body("category").notEmpty().withMessage("This field is required.").toInt(),
   body("brand").notEmpty().withMessage("This field is requied.").toInt(),
 ];
-const newController = {
+const formController = {
   get: async (req, res) => {
     const categories = await queries.getCategories();
     const brands = await queries.getBrands();
-    res.render("index", { page: "new", categories, brands, length });
+    res.render("index", {
+      title: "Add a new device!",
+      page: "new",
+      categories,
+      brands,
+      length,
+    });
   },
   post: [
     formValidator,
@@ -24,9 +30,13 @@ const newController = {
       if (!errors.isEmpty()) {
         const categories = await queries.getCategories();
         const brands = await queries.getBrands();
-        return res
-          .status(400)
-          .render("new", { categories, brands, length, errors });
+        return res.status(400).render("index", {
+          title: "Add a new device!",
+          categories,
+          brands,
+          length,
+          errors,
+        });
       }
       const device = req.body["device-input"];
       const categoryId = req.body.category;
@@ -35,6 +45,10 @@ const newController = {
       res.redirect("/");
     },
   ],
+  delete: async (req, res) => {
+    await queries.deleteDevice(req.params.id);
+    res.redirect("/");
+  },
 };
 
-module.exports = newController;
+module.exports = formController;
