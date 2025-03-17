@@ -40,9 +40,9 @@ const formController = {
         });
       }
       const device = req.body["device-input"];
-      const categoryId = req.body.category;
       const brandId = req.body.brand;
-      await queries.addDevice(device, categoryId, brandId);
+      const categoryId = req.body.category;
+      await queries.addDevice(device, brandId, categoryId);
       res.redirect("/");
     },
   ],

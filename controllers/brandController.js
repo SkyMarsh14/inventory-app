@@ -26,6 +26,10 @@ const controller = {
       res.redirect("/brand");
     },
   ],
+  delete: async (req, res) => {
+    const brandId = req.params.brandId;
+    res.redirect("/brand");
+  },
 };
 
 module.exports = controller;

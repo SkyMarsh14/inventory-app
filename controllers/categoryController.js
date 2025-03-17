@@ -39,6 +39,11 @@ const controller = {
       res.redirect("/category");
     },
   ],
+  delete: async (req, res) => {
+    const categoryId = req.params.categoryId;
+    await queries.deleteCategory(categoryId);
+    res.redirect("/category");
+  },
 };
 
 module.exports = controller;

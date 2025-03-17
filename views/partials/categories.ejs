@@ -7,9 +7,12 @@
   <ul>
     <% for(i=0; i<data.length; i++) { %>
       <li>
-        <a href="<%= page %>/<%= data[i].id %>/update">
-          <%= data[i][dataname] %>
-        </a>
+        <form action="/<%=page %>/<%=data[i].id %>/delete" class="deleteForm category">
+            <div><%= data[i][dataname] %></div>
+          <button class="deleteBtn" onClick="confirm('All the items in the category will be deleted.')">
+            <i class="fa fa-solid fa-trash"></i>
+          </button>
+          </form>
       </li>
     <% } %>
   </ul>

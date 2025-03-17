@@ -26,10 +26,10 @@ async function addBrand(brand) {
   await pool.query("INSERT INTO brands (brandName) VALUES ($1)", [brand]);
 }
 
-async function addDevice(device, categoryId, brandId) {
+async function addDevice(device, brandId, categoryId) {
   await pool.query(
     "INSERT INTO devices(name,brandid,categoryid) VALUES($1,$2,$3)",
-    [device, categoryId, brandId]
+    [device, brandId, categoryId]
   );
 }
 async function deleteDevice(deviceId) {
@@ -46,8 +46,17 @@ async function getDeviceById(deviceId) {
 async function updateDevice(deviceId, deviceName, categoryId, brandId) {
   await pool.query(
     `UPDATE devices SET name=$1, brandid=$2, categoryid=$3 WHERE id=$4`,
-    [deviceName, categoryId, brandId, deviceId]
+    [deviceName, brandId, categoryId, deviceId]
   );
+}
+async function deleteCategory(categoryId) {
+  await pool.query(`DELETE FROM devices WHERE categoryid=${categoryId}`);
+  await pool.query(`DELETE FROM categories WHERE id=${categoryId}`);
+}
+
+async function deleteBrand(brandId) {
+  await pool.query(`DELETE FROM devices WHERE brandid=${brandId}`);
+  await pool.query(`DELETE FROM brands WHERE id=${brandId}`);
 }
 module.exports = {
   getAllDevices,
@@ -59,4 +68,6 @@ module.exports = {
   deleteDevice,
   getDeviceById,
   updateDevice,
+  deleteBrand,
+  deleteCategory,
 };
