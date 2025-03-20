@@ -105,45 +105,6 @@ const DEVICE_VALUES = `
     ('ZV-E10', (SELECT id FROM brands WHERE brandName = 'Sony'), (SELECT id FROM categories WHERE categoryName = 'camera'))
 `;
 
-const SUPPLIER = `CREATE TABLE IF NOT EXISTS suppliers (
-    id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    supplierName VARCHAR (255) UNIQUE
-);
-
-INSERT INTO suppliers (supplierName)
-VALUES 
-    ('Amazon'),
-    ('Best Buy'),
-    ('Maker Direct'),
-    ('NewEgg'),
-    ('B&H Photo'),
-    ('Walmart'),
-    ('Target'),
-    ('Costco'),
-    ('Micro Center'),
-    ('Adorama')
-    ON CONFLICT (supplierName) DO NOTHING
-`;
-
-const DEVICE_SUPPLIER = `CREATE TABLE IF NOT EXISTS device_suppliers (
-    deviceId INT,
-    supplierId INT,
-    PRIMARY KEY (deviceId, supplierId),
-    FOREIGN KEY (deviceId) REFERENCES devices(id),
-    FOREIGN KEY (supplierId) REFERENCES suppliers(id)
-)`;
-
-const DEVICE_SUPPLIER_VALUES = `
-    -- Insert some sample relationships between devices and suppliers
-    -- This will create entries for some device-supplier combinations
-    INSERT INTO device_suppliers (deviceId, supplierId)
-    SELECT d.id, s.id
-    FROM devices d
-    CROSS JOIN suppliers s
-    WHERE (d.id + s.id) % 3 = 0  -- Just a simple formula to select some combinations
-    ON CONFLICT (deviceId, supplierId) DO NOTHING
-`;
-
 async function main() {
   console.log("Seeding...");
   const client = new Client({
@@ -155,10 +116,7 @@ async function main() {
     await client.query(CATEGORY_VALUES);
     await client.query(BRAND);
     await client.query(DEVICE);
-    await client.query(SUPPLIER);
-    await client.query(DEVICE_SUPPLIER);
     await client.query(DEVICE_VALUES);
-    await client.query(DEVICE_SUPPLIER_VALUES);
     console.log("Seeding completed!");
   } catch (err) {
     console.error("Error during seeding:", err);
